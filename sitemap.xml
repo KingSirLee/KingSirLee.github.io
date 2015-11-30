@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2015/11/30/JS%E5%A4%84%E7%90%86%E6%97%B6%E5%B7%AE%E7%9A%84%E9%97%AE%E9%A2%98/</loc>
+    <lastmod>2015-11-30T06:26:04.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2015/11/25/Linux%E6%96%B0%E6%89%8B%E5%85%A5%E9%97%A8/</loc>
     <lastmod>2015-11-25T11:56:04.000Z</lastmod>
   </url>

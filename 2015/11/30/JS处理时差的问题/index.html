@@ -3,21 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>grails event遇到的问题 | 李国旺的个人博客</title>
+  <title>JS处理时差的问题 | 李国旺的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="今天在做一个需求，就是订单创建成功后新建快照。做的时候遇到一个问题，时不时报错,错误如下所示：
-org.hibernate.exception.GenericJDBCException: could not load an entity看字面意思，问题很简单，就是没有加载到相应的对象。">
+  <meta name="description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;今天发现一个代码上的坑,在订单去支付的时候会有半个小时倒计时的交互,但是一个客户反映:一下单就到截止时间了.后来发现,我们计算倒计时的时候取的是客户端的时间(new Date()),所以存在一个时差的问题.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="grails event遇到的问题">
-<meta property="og:url" content="http://yoursite.com/2015/11/24/grails-event遇到的问题/index.html">
+<meta property="og:title" content="JS处理时差的问题">
+<meta property="og:url" content="http://yoursite.com/2015/11/30/JS处理时差的问题/index.html">
 <meta property="og:site_name" content="李国旺的个人博客">
-<meta property="og:description" content="今天在做一个需求，就是订单创建成功后新建快照。做的时候遇到一个问题，时不时报错,错误如下所示：
-org.hibernate.exception.GenericJDBCException: could not load an entity看字面意思，问题很简单，就是没有加载到相应的对象。">
-<meta property="og:updated_time" content="2015-11-24T11:48:28.000Z">
+<meta property="og:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;今天发现一个代码上的坑,在订单去支付的时候会有半个小时倒计时的交互,但是一个客户反映:一下单就到截止时间了.后来发现,我们计算倒计时的时候取的是客户端的时间(new Date()),所以存在一个时差的问题.">
+<meta property="og:updated_time" content="2015-11-30T06:26:04.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="grails event遇到的问题">
-<meta name="twitter:description" content="今天在做一个需求，就是订单创建成功后新建快照。做的时候遇到一个问题，时不时报错,错误如下所示：
-org.hibernate.exception.GenericJDBCException: could not load an entity看字面意思，问题很简单，就是没有加载到相应的对象。">
+<meta name="twitter:title" content="JS处理时差的问题">
+<meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;今天发现一个代码上的坑,在订单去支付的时候会有半个小时倒计时的交互,但是一个客户反映:一下单就到截止时间了.后来发现,我们计算倒计时的时候取的是客户端的时间(new Date()),所以存在一个时差的问题.">
   
     <link rel="alternative" href="/atom.xml" title="李国旺的个人博客" type="application/atom+xml">
   
@@ -192,11 +189,11 @@ org.hibernate.exception.GenericJDBCException: could not load an entity看字面�
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-grails-event遇到的问题" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-JS处理时差的问题" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/11/24/grails-event遇到的问题/" class="article-date">
-  	<time datetime="2015-11-24T11:40:46.000Z" itemprop="datePublished">2015-11-24</time>
+      <a href="/2015/11/30/JS处理时差的问题/" class="article-date">
+  	<time datetime="2015-11-30T05:49:50.000Z" itemprop="datePublished">2015-11-30</time>
 </a>
     </div>
   
@@ -209,7 +206,7 @@ org.hibernate.exception.GenericJDBCException: could not load an entity看字面�
         
   
     <h1 class="article-title" itemprop="name">
-      grails event遇到的问题
+      JS处理时差的问题
     </h1>
   
 
@@ -218,7 +215,7 @@ org.hibernate.exception.GenericJDBCException: could not load an entity看字面�
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/grails/">grails</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
 	</div>
 
         
@@ -229,11 +226,9 @@ org.hibernate.exception.GenericJDBCException: could not load an entity看字面�
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>今天在做一个需求，就是订单创建成功后新建快照。做的时候遇到一个问题，时不时报错,错误如下所示：</p>
-<p><pre><code>org.hibernate.exception.GenericJDBCException: could not load an entity<br></code></pre><br>看字面意思，问题很简单，就是没有加载到相应的对象。<br><a id="more"></a></p>
-<h3 id="出错原因">出错原因</h3><p>因为在当前event中，参数是以对象进行传输的，该对象的属性中存在懒加载关系，在之前的线程中，该对象的属性都正常的被加载。新打开的event相当于又开了一个线程，当要用到该属性值的时候，如果没有加载到就会出现问题。</p>
-<h3 id="解决方案">解决方案</h3><p>1.在domain中该属性lazy改为false，不懒加载。<br>2.参数传输不以对象方式，以Id进行传输,在要用到哪些值的时候再去查询。</p>
-<p></p><p>好了这个问题解决了，然后后来发现偶尔会出现另外一个错误，nullpoint，但是看代码bing没有什么逻辑错误。后来想了下可能是这样子的，在主线程中订单保存成功，实际上数据库没有执行完毕，然而这时候在event中就开始去用这个trade，这个时候就有问题。后来采用了一个不是好办法的办法，在event中sleep一秒，再执行新建快照的逻辑，在运行代码就没有什么问题了。好吧，这也算解决问题了。。</p><br><br><br><br>相关文献<br><a href="">http://stackoverflow.com/questions/10040430/genericjdbcexception-could-not-load-an-entity</a><p></p>
+        <p>&#160; &#160; &#160; &#160;今天发现一个代码上的坑,在订单去支付的时候会有半个小时倒计时的交互,但是一个客户反映:一下单就到截止时间了.后来发现,我们计算倒计时的时候取的是客户端的时间(new Date()),所以存在一个时差的问题.<br><a id="more"></a><br>有问题的代码:<br><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">var endTime = $(<span class="string">"input[name=countTime]"</span>).val();</span><br><span class="line">var end_time = <span class="keyword">new</span> Date(endTime).getTime(),</span><br><span class="line">                sys_second = (end_time-<span class="keyword">new</span> Date().getTime())/<span class="number">1000</span>;</span><br><span class="line">var timer = setInterval(function()&#123;</span><br><span class="line">            <span class="keyword">if</span> (sys_second &gt; <span class="number">1</span>) &#123;</span><br><span class="line">                sys_second -= <span class="number">1</span>;</span><br><span class="line">                var <span class="built_in">hour</span> = Math.<span class="built_in">floor</span>(sys_second / <span class="number">3600</span>);</span><br><span class="line">                var <span class="built_in">minute</span> = Math.<span class="built_in">floor</span>((sys_second / <span class="number">60</span>) % <span class="number">60</span>);</span><br><span class="line">                var <span class="built_in">second</span> = Math.<span class="built_in">floor</span>(sys_second % <span class="number">60</span>);</span><br><span class="line">                <span class="built_in">hour</span> = <span class="built_in">hour</span>&lt;<span class="number">10</span>?<span class="string">"0"</span>+<span class="built_in">hour</span>:<span class="built_in">hour</span>; <span class="comment">//计算小时</span></span><br><span class="line">                <span class="built_in">minute</span> = <span class="built_in">minute</span>&lt;<span class="number">10</span>?<span class="string">"0"</span>+<span class="built_in">minute</span>:<span class="built_in">minute</span>; <span class="comment">//计算分钟</span></span><br><span class="line">                <span class="built_in">second</span> = <span class="built_in">second</span>&lt;<span class="number">10</span>?<span class="string">"0"</span>+<span class="built_in">second</span>:<span class="built_in">second</span>; <span class="comment">//计算秒杀</span></span><br><span class="line">                var <span class="built_in">text</span> = <span class="built_in">hour</span> + <span class="string">":"</span> + <span class="built_in">minute</span> + <span class="string">":"</span> + <span class="built_in">second</span>;</span><br><span class="line">                <span class="comment">//....</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                clearInterval(timer);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="number">1000</span>);</span><br></pre></td></tr></table></figure></p>
+<p><code>new Date()</code>取的是当前客户端的时间,很明显,如果不在同一个时差会有问题的.<br><br> 如果在不改变接口的情况下,仅仅通过js来判断的话加上一句代码就OK.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> chinaTime =  <span class="keyword">new</span> <span class="built_in">Date</span>(+<span class="keyword">new</span> <span class="built_in">Date</span>()+<span class="number">8</span>*<span class="number">3600</span>*<span class="number">1000</span>).toISOString().replace(<span class="regexp">/T/g</span>,<span class="string">' '</span>).replace(<span class="regexp">/\.[\d]&#123;3&#125;Z/</span>,<span class="string">''</span>);</span><br><span class="line">sys_second = (end_time-<span class="keyword">new</span> <span class="built_in">Date</span>(chinaTime).getTime())/<span class="number">1000</span>;</span><br></pre></td></tr></table></figure></p>
+<p>这样子计算时间的标准也就一样了.<br>ps:<strong>当然这不是最佳实践方式,起止时间都应该从服务端获取,这样子才可以!</strong></p>
 
       
     </div>
@@ -243,18 +238,9 @@ org.hibernate.exception.GenericJDBCException: could not load an entity看字面�
     
 <nav id="article-nav">
   
-    <a href="/2015/11/24/无题/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          无题
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/10/13/grails-SpringEvents用法介绍/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">grails SpringEvents用法介绍</div>
+    <a href="/2015/11/25/Linux新手入门/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Linux新手入门</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -283,7 +269,7 @@ org.hibernate.exception.GenericJDBCException: could not load an entity看字面�
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="grails-event遇到的问题" data-title="grails event遇到的问题" data-url="http://yoursite.com/2015/11/24/grails-event遇到的问题/"></div>
+	<div class="ds-thread" data-thread-key="JS处理时差的问题" data-title="JS处理时差的问题" data-url="http://yoursite.com/2015/11/30/JS处理时差的问题/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
