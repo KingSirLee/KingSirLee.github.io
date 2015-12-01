@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>git常用命令 | 李国旺的个人博客</title>
+  <title>JS中new Date()和ios的兼容问题 | 李国旺的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.查看分支查看本地分支:12$ git branch* master">
+  <meta name="description" content="移动端,做关于时间的一个需求,很自然的想到new date()这个方法.代码如下:12var time = new Date(&apos;2015-11-11 11:11:11&apos;);console.log(time);">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git常用命令">
-<meta property="og:url" content="http://yoursite.com/2015/11/30/git常用命令/index.html">
+<meta property="og:title" content="JS中new Date()和ios的兼容问题">
+<meta property="og:url" content="http://yoursite.com/2015/12/01/JS中new-Date-和ios的兼容问题/index.html">
 <meta property="og:site_name" content="李国旺的个人博客">
-<meta property="og:description" content="1.查看分支查看本地分支:12$ git branch* master">
-<meta property="og:updated_time" content="2015-11-30T08:51:01.000Z">
+<meta property="og:description" content="移动端,做关于时间的一个需求,很自然的想到new date()这个方法.代码如下:12var time = new Date(&apos;2015-11-11 11:11:11&apos;);console.log(time);">
+<meta property="og:updated_time" content="2015-12-01T09:11:41.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git常用命令">
-<meta name="twitter:description" content="1.查看分支查看本地分支:12$ git branch* master">
+<meta name="twitter:title" content="JS中new Date()和ios的兼容问题">
+<meta name="twitter:description" content="移动端,做关于时间的一个需求,很自然的想到new date()这个方法.代码如下:12var time = new Date(&apos;2015-11-11 11:11:11&apos;);console.log(time);">
   
     <link rel="alternative" href="/atom.xml" title="李国旺的个人博客" type="application/atom+xml">
   
@@ -189,11 +189,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-git常用命令" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-JS中new-Date-和ios的兼容问题" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/11/30/git常用命令/" class="article-date">
-  	<time datetime="2015-11-30T08:19:54.000Z" itemprop="datePublished">2015-11-30</time>
+      <a href="/2015/12/01/JS中new-Date-和ios的兼容问题/" class="article-date">
+  	<time datetime="2015-12-01T06:13:03.000Z" itemprop="datePublished">2015-12-01</time>
 </a>
     </div>
   
@@ -206,7 +206,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      git常用命令
+      JS中new Date()和ios的兼容问题
     </h1>
   
 
@@ -215,7 +215,7 @@
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
 	</div>
 
         
@@ -226,33 +226,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="1-查看分支">1.查看分支</h3><p>查看本地分支:<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="keyword">branch</span><br><span class="line"></span>* master</span><br></pre></td></tr></table></figure></p>
+        <p>移动端,做关于时间的一个需求,很自然的想到<code>new date()</code>这个方法.<br>代码如下:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> time = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'2015-11-11 11:11:11'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(time);</span><br></pre></td></tr></table></figure></p>
 <a id="more"></a>
-<p>查看远程分支<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -a</span><br><span class="line">* master</span><br><span class="line">  remotes<span class="regexp">/origin/</span>HEAD -&gt; origin/master</span><br><span class="line">  remotes<span class="regexp">/origin/</span>dev</span><br><span class="line">  remotes<span class="regexp">/origin/</span>master</span><br><span class="line">  remotes<span class="regexp">/origin/</span><span class="keyword">public</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="2-新建分支">2.新建分支</h3><p>新建本地分支<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$git</span> branch test</span><br><span class="line">* master</span><br><span class="line">   test</span><br></pre></td></tr></table></figure></p>
-<p>新建远程分支<br><figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$git <span class="keyword">push</span> origin <span class="keyword">test</span>:<span class="keyword">test</span>   // git <span class="keyword">push</span> origin <span class="keyword">test</span>等价</span><br></pre></td></tr></table></figure></p>
-<p>远程新建public分支,并把本地master推上去<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$git</span> push origin master:public</span><br></pre></td></tr></table></figure></p>
-<h3 id="3-本地切换分支">3.本地切换分支</h3><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$git</span> checkout test</span><br><span class="line">切换到分支 <span class="string">'test'</span></span><br></pre></td></tr></table></figure>
-<h3 id="4-删除分支">4.删除分支</h3><p>删除本地分支<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$git</span> branch -d xx</span><br></pre></td></tr></table></figure></p>
-<p>注意:不能删除当前所在分支,例如:当前在test分支<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$git</span> branch -d test</span><br><span class="line">error: 无法删除您当前所在的分支 <span class="string">'test'</span>。</span><br></pre></td></tr></table></figure></p>
-<p>删除远程分支<br>```<br>$git push origin  :public</p>
-<h3 id="5-版本回退">5.版本回退</h3><p>首选确定回退到哪一个版本</p>
-<pre><code>$git log
-  commit 41d3027a49999a280da3fcc413601cfa4345ca35
-  Author: xxxxxx
-  Date:  xxxxxx
-  xxx
-  commit 98c396e520eaeaf59bb0856ff5ccf1cb74cecc74
-  Author: xxxxxxxxx
-  Date:   xxxxxxxxx
-  xxx
-</code></pre>
-
-<p>记下下commitId</p>
-<pre><code>git reset --hard 41d3027a49999a280da3fcc413601cfa434
-</code></pre>
-
-<p>(待续…)</p>
+<p>这段代码在安卓,pc上都没有问题,但是在IOS下会有问题,显示<code>Invalid Date</code>,明显存在兼容性问题.<br>后来google得知在ios下面Date解析的格式应该是”<strong>yyyy/MM/dd HH:mm:ss</strong>“,也就是代码应该这样子:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> time = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'2015/11/11 11:11:11'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(time);</span><br></pre></td></tr></table></figure></p>
+<p>经测试,完美支持其他浏览器(chrome,firefox,android).据说IE下也存在这样的问题也必须是”<strong>yyyy/MM/dd HH:mm:ss</strong>“(未测试).</p>
+<p>另外,如果拿到的数据数”2015-11-11 11:11:11”的话,js <code>replace()</code>方法也能帮你搞定.<br><figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var <span class="keyword">str</span> = <span class="string">'2015-11-11 11:11:11'</span>;</span><br><span class="line"><span class="keyword">str</span> = <span class="keyword">str</span>.replace(/-/g, <span class="string">'/'</span>);</span><br></pre></td></tr></table></figure></p>
+<p>参考连接:<a href="http://www.w3school.com.cn/jsref/jsref_replace.asp" target="_blank" rel="external">http://www.w3school.com.cn/jsref/jsref_replace.asp</a></p>
 
       
     </div>
@@ -262,18 +241,9 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/12/01/JS中new-Date-和ios的兼容问题/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          JS中new Date()和ios的兼容问题
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/11/30/JS处理时差的问题/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">JS处理时差的问题</div>
+    <a href="/2015/11/30/git常用命令/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">git常用命令</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -302,7 +272,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="git常用命令" data-title="git常用命令" data-url="http://yoursite.com/2015/11/30/git常用命令/"></div>
+	<div class="ds-thread" data-thread-key="JS中new-Date-和ios的兼容问题" data-title="JS中new Date()和ios的兼容问题" data-url="http://yoursite.com/2015/12/01/JS中new-Date-和ios的兼容问题/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
