@@ -3,17 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: js | 李国旺的个人博客</title>
+  <title>ssh登录慢问题的解决 | 李国旺的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="求知的道路，从未停止。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="李国旺的个人博客">
-<meta property="og:url" content="http://yoursite.com/tags/js/index.html">
+  <meta name="description" content="在pull/push代码的时候往往会卡顿一下,有时候会大概停留十秒左右,甚至更久,这样子很影响效率.google得知ssh登录的问题,解决方案如下:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ssh登录慢问题的解决">
+<meta property="og:url" content="http://yoursite.com/2015/12/02/ssh登录慢问题的解决/index.html">
 <meta property="og:site_name" content="李国旺的个人博客">
-<meta property="og:description" content="求知的道路，从未停止。">
+<meta property="og:description" content="在pull/push代码的时候往往会卡顿一下,有时候会大概停留十秒左右,甚至更久,这样子很影响效率.google得知ssh登录的问题,解决方案如下:">
+<meta property="og:image" content="http://77g54t.com1.z0.glb.clouddn.com/201512021438.jpg">
+<meta property="og:updated_time" content="2015-12-02T06:56:43.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="李国旺的个人博客">
-<meta name="twitter:description" content="求知的道路，从未停止。">
+<meta name="twitter:title" content="ssh登录慢问题的解决">
+<meta name="twitter:description" content="在pull/push代码的时候往往会卡顿一下,有时候会大概停留十秒左右,甚至更久,这样子很影响效率.google得知ssh登录的问题,解决方案如下:">
   
     <link rel="alternative" href="/atom.xml" title="李国旺的个人博客" type="application/atom+xml">
   
@@ -188,84 +190,105 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-ssh登录慢问题的解决" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/12/01/JS中new-Date-和ios的兼容问题/" class="archive-article-date">
-  	<time datetime="2015-12-01T06:13:03.000Z" itemprop="datePublished">Dec 1</time>
+    <div class="article-meta">
+      <a href="/2015/12/02/ssh登录慢问题的解决/" class="article-date">
+  	<time datetime="2015-12-02T06:10:14.000Z" itemprop="datePublished">2015-12-02</time>
 </a>
-        </div>
-    	 
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/12/01/JS中new-Date-和ios的兼容问题/">JS中new Date()和ios的兼容问题</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ssh登录慢问题的解决
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
 	</div>
 
-          
+        
 
-        </div>
         <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
+      </div>
+      
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/11/30/JS处理时差的问题/" class="archive-article-date">
-  	<time datetime="2015-11-30T05:49:50.000Z" itemprop="datePublished">Nov 30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/11/30/JS处理时差的问题/">JS处理时差的问题</a>
-    </h1>
-  
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在pull/push代码的时候往往会卡顿一下,有时候会大概停留十秒左右,甚至更久,这样子很影响效率.google得知ssh登录的问题,解决方案如下:<br><a id="more"></a><br><strong>关闭ssh的gssapi认证</strong><br>修改本机ssh客户端配置ssh_config(注意不是sshd_conf)<br>vi /etc/ssh/ssh_config，设置GSSAPIAuthentication no 并重启sshd<br>如图所示:<br><img src="http://77g54t.com1.z0.glb.clouddn.com/201512021438.jpg" alt="示例图片"><br>配置过后明显速度快了很多.</p>
+<p>另外了解到:<br>用ssh -v user@server 可以看到登录时有如下信息：<br>debug1: Next authentication method: gssapi-with-mic<br>debug1: Unspecified GSS failure. Minor code may provide more information<br>注：ssh -vvv user@server 可以看到更细的debug信息</p>
+<p>相关连接:<br><a href="http://www.linuxidc.com/Linux/2012-12/77144.htm" target="_blank" rel="external">http://www.linuxidc.com/Linux/2012-12/77144.htm</a></p>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/12/01/JS中new-Date-和ios的兼容问题/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JS中new Date()和ios的兼容问题</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
 	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 
-    
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="ssh登录慢问题的解决" data-title="ssh登录慢问题的解决" data-url="http://yoursite.com/2015/12/02/ssh登录慢问题的解决/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
 
 </div>
       <footer id="footer">
@@ -291,9 +314,9 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false
 	}
