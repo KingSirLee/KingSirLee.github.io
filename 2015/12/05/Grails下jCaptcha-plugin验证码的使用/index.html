@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="李国旺的个人博客">
 <meta property="og:description" content="grails添加验证码插件,在BulidConfig.groovy文件中,plugins里面加上1compile &quot;org.grails.plugins:jcaptcha:1.5.0&quot;
 重启项目,这时候可能会有错误:">
-<meta property="og:updated_time" content="2015-12-05T10:25:08.000Z">
+<meta property="og:updated_time" content="2015-12-07T07:55:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Grails下jCaptcha plugin验证码的使用">
 <meta name="twitter:description" content="grails添加验证码插件,在BulidConfig.groovy文件中,plugins里面加上1compile &quot;org.grails.plugins:jcaptcha:1.5.0&quot;
@@ -237,6 +237,10 @@
 <p><strong>注意:页面标签中的name的值要和Config.groovy中jcaptchas的name保持一致!!!</strong><br>controller中的代码:<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LoginController</span> &#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">jcaptchaService</span></span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">image</span> = &#123;</span></span><br><span class="line">        <span class="keyword">if</span> (params.submit) &#123;</span><br><span class="line">            flash.message = (jcaptchaService.validateResponse(<span class="string">"image"</span>, session.id, params.code)) ? <span class="string">"Text matches"</span> <span class="symbol">:</span> <span class="string">"Text doesn't match"</span></span><br><span class="line">        &#125;</span><br><span class="line">        render <span class="symbol">view:</span> <span class="string">'image'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p><strong>注意:<br>    1.如果验证码有英文,区别大小写!!!<br>    2.验证码只能验证一次
 </strong></p>
+<p>另外,点击刷新验证码功能会有点问题:因为<code>&lt;jcaptcha:jpeg &gt;</code>标签吧图片路径封装起来，不能够获得src属性值，所以没有办法写JS脚本来实现换一张功能.<br>解决方案:换为<code>&lt;img&gt;</code>标签.<br>例:</p>
+<p>&lt;img id=”imageCaptcha” onclick=”changePic()”  src=”/jcaptcha/jpeg/imageCaptcha?id=${new Date().getTime()}”/&gt;</p>
+<p>写一段JS脚本:</p>
+<p>functon changePic(){<br>    $(“#imageCaptcha”).attr(“src”,”/jcaptcha/jpeg/imageCaptcha?id=”+new Date().getTime());<br>}<br>即可解决该问题.</p>
 
       
     </div>
