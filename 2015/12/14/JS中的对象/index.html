@@ -3,21 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>grails event遇到的问题 | 李国旺的个人博客</title>
+  <title>JS中的对象 | 李国旺的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="今天在做一个需求，就是订单创建成功后新建快照。做的时候遇到一个问题，时不时报错,错误如下所示：
-org.hibernate.exception.GenericJDBCException: could not load an entity看字面意思，问题很简单，就是没有加载到相应的对象。">
+  <meta name="description" content="今天被自己大意坑了一下.本来打算声明一个对象,存一下键值对,类似于java中的map,于是:">
 <meta property="og:type" content="article">
-<meta property="og:title" content="grails event遇到的问题">
-<meta property="og:url" content="http://kingsirlee.github.io/2015/11/24/grails-event遇到的问题/index.html">
+<meta property="og:title" content="JS中的对象">
+<meta property="og:url" content="http://kingsirlee.github.io/2015/12/14/JS中的对象/index.html">
 <meta property="og:site_name" content="李国旺的个人博客">
-<meta property="og:description" content="今天在做一个需求，就是订单创建成功后新建快照。做的时候遇到一个问题，时不时报错,错误如下所示：
-org.hibernate.exception.GenericJDBCException: could not load an entity看字面意思，问题很简单，就是没有加载到相应的对象。">
-<meta property="og:updated_time" content="2015-11-24T11:48:28.000Z">
+<meta property="og:description" content="今天被自己大意坑了一下.本来打算声明一个对象,存一下键值对,类似于java中的map,于是:">
+<meta property="og:updated_time" content="2015-12-14T12:31:32.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="grails event遇到的问题">
-<meta name="twitter:description" content="今天在做一个需求，就是订单创建成功后新建快照。做的时候遇到一个问题，时不时报错,错误如下所示：
-org.hibernate.exception.GenericJDBCException: could not load an entity看字面意思，问题很简单，就是没有加载到相应的对象。">
+<meta name="twitter:title" content="JS中的对象">
+<meta name="twitter:description" content="今天被自己大意坑了一下.本来打算声明一个对象,存一下键值对,类似于java中的map,于是:">
   
     <link rel="alternative" href="/atom.xml" title="李国旺的个人博客" type="application/atom+xml">
   
@@ -192,11 +189,11 @@ org.hibernate.exception.GenericJDBCException: could not load an entity看字面�
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-grails-event遇到的问题" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-JS中的对象" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/11/24/grails-event遇到的问题/" class="article-date">
-  	<time datetime="2015-11-24T11:40:46.000Z" itemprop="datePublished">2015-11-24</time>
+      <a href="/2015/12/14/JS中的对象/" class="article-date">
+  	<time datetime="2015-12-14T12:14:59.000Z" itemprop="datePublished">2015-12-14</time>
 </a>
     </div>
   
@@ -209,7 +206,7 @@ org.hibernate.exception.GenericJDBCException: could not load an entity看字面�
         
   
     <h1 class="article-title" itemprop="name">
-      grails event遇到的问题
+      JS中的对象
     </h1>
   
 
@@ -218,7 +215,7 @@ org.hibernate.exception.GenericJDBCException: could not load an entity看字面�
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/grails/">grails</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
 	</div>
 
         
@@ -229,11 +226,17 @@ org.hibernate.exception.GenericJDBCException: could not load an entity看字面�
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>今天在做一个需求，就是订单创建成功后新建快照。做的时候遇到一个问题，时不时报错,错误如下所示：</p>
-<p><pre><code>org.hibernate.exception.GenericJDBCException: could not load an entity<br></code></pre><br>看字面意思，问题很简单，就是没有加载到相应的对象。<br><a id="more"></a></p>
-<h3 id="出错原因">出错原因</h3><p>因为在当前event中，参数是以对象进行传输的，该对象的属性中存在懒加载关系，在之前的线程中，该对象的属性都正常的被加载。新打开的event相当于又开了一个线程，当要用到该属性值的时候，如果没有加载到就会出现问题。</p>
-<h3 id="解决方案">解决方案</h3><p>1.在domain中该属性lazy改为false，不懒加载。<br>2.参数传输不以对象方式，以Id进行传输,在要用到哪些值的时候再去查询。</p>
-<p></p><p>好了这个问题解决了，然后后来发现偶尔会出现另外一个错误，nullpoint，但是看代码bing没有什么逻辑错误。后来想了下可能是这样子的，在主线程中订单保存成功，实际上数据库没有执行完毕，然而这时候在event中就开始去用这个trade，这个时候就有问题。后来采用了一个不是好办法的办法，在event中sleep一秒，再执行新建快照的逻辑，在运行代码就没有什么问题了。好吧，这也算解决问题了。。</p><br><br><br><br>相关文献<br><a href="">http://stackoverflow.com/questions/10040430/genericjdbcexception-could-not-load-an-entity</a><p></p>
+        <p>今天被自己大意坑了一下.<br>本来打算声明一个对象,存一下键值对,类似于java中的map,于是:<br><a id="more"></a><br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$scope</span>.itemMap = [];</span><br><span class="line"><span class="keyword">for</span>(var i=<span class="number">0</span>; i&lt;= list.length; i++)&#123;</span><br><span class="line">    <span class="variable">$scope</span>.itemMap.push(list[i], true);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>接着就屁颠屁颠的在页面上拿来用,很显然,并拿不到.<br>于是检查代码,并没有什么报错,后来console.log一下$scope.itemMap<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">12</span>,<span class="literal">true</span>,<span class="number">34</span>,ture]</span><br></pre></td></tr></table></figure></p>
+<p>呵呵,并不是自己想要的数据结构.后来检查发现是自己声明对象的时候错了,应该是:<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$scope</span>.itemMap = [];</span><br><span class="line"><span class="keyword">for</span>(var i=<span class="number">0</span>; i&lt;= list.length; i++)&#123;</span><br><span class="line">    <span class="variable">$scope</span>.itemMap[list[i]] = true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这样的数据结构是:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Object &#123;<span class="number">12</span>: <span class="literal">true</span>, <span class="number">34</span>: <span class="literal">true</span>&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这才是我想要的.<br>好吧,基础知识有必要巩固一下了.</p>
+<p><strong>复习</strong>:在JS中，[]表示数组，{}表示对象.<br>例如:<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable"><span class="keyword">var</span> json</span>=&#123;</span><br><span class="line">    <span class="string">"eles"</span>:[<span class="string">"aaa"</span>,<span class="string">"bbb"</span>,<span class="string">"ccc"</span>,<span class="string">"ddd"</span>]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>表示对象json的eles属性的值为一个四个元素的数组,可以通过json.eles[0]、json.eles[1]…来获取这些值；</p>
+<p>然而:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br></pre></td></tr></table></figure></p>
+<p>在js中其实可以等价于</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable"><span class="keyword">var</span> arr</span> = [];</span><br></pre></td></tr></table></figure>
+<p>表示一个数组.</p>
 
       
     </div>
@@ -243,18 +246,9 @@ org.hibernate.exception.GenericJDBCException: could not load an entity看字面�
     
 <nav id="article-nav">
   
-    <a href="/2015/11/24/无题/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          无题
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/10/13/grails-SpringEvents用法介绍/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">grails SpringEvents用法介绍</div>
+    <a href="/2015/12/05/Grails下jCaptcha-plugin验证码的使用/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Grails下jCaptcha plugin验证码的使用</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -283,7 +277,7 @@ org.hibernate.exception.GenericJDBCException: could not load an entity看字面�
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="grails-event遇到的问题" data-title="grails event遇到的问题" data-url="http://kingsirlee.github.io/2015/11/24/grails-event遇到的问题/"></div>
+	<div class="ds-thread" data-thread-key="JS中的对象" data-title="JS中的对象" data-url="http://kingsirlee.github.io/2015/12/14/JS中的对象/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
