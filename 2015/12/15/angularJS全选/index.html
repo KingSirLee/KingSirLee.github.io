@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>git常用命令 | 李国旺的个人博客</title>
+  <title>angularJS全选 | 李国旺的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.查看分支查看本地分支:12$ git branch* master">
+  <meta name="description" content="做了一个功能,购物车内lineItem全选和反选功能,记录一下主要代码块.首先声明一个对象,储存动态生成的键值对,默认是全选的.1234567$scope.selectLineItemList = &amp;#123;&amp;#125;;$scope.select_all = true;// 生出数据for(var i= 0; i&amp;lt;$scope.sortLineItems.length; i++)&amp;#12">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git常用命令">
-<meta property="og:url" content="http://kingsirlee.github.io/2015/11/30/git常用命令/index.html">
+<meta property="og:title" content="angularJS全选">
+<meta property="og:url" content="http://kingsirlee.github.io/2015/12/15/angularJS全选/index.html">
 <meta property="og:site_name" content="李国旺的个人博客">
-<meta property="og:description" content="1.查看分支查看本地分支:12$ git branch* master">
-<meta property="og:updated_time" content="2015-11-30T08:51:01.000Z">
+<meta property="og:description" content="做了一个功能,购物车内lineItem全选和反选功能,记录一下主要代码块.首先声明一个对象,储存动态生成的键值对,默认是全选的.1234567$scope.selectLineItemList = &amp;#123;&amp;#125;;$scope.select_all = true;// 生出数据for(var i= 0; i&amp;lt;$scope.sortLineItems.length; i++)&amp;#12">
+<meta property="og:updated_time" content="2015-12-15T03:38:31.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git常用命令">
-<meta name="twitter:description" content="1.查看分支查看本地分支:12$ git branch* master">
+<meta name="twitter:title" content="angularJS全选">
+<meta name="twitter:description" content="做了一个功能,购物车内lineItem全选和反选功能,记录一下主要代码块.首先声明一个对象,储存动态生成的键值对,默认是全选的.1234567$scope.selectLineItemList = &amp;#123;&amp;#125;;$scope.select_all = true;// 生出数据for(var i= 0; i&amp;lt;$scope.sortLineItems.length; i++)&amp;#12">
   
     <link rel="alternative" href="/atom.xml" title="李国旺的个人博客" type="application/atom+xml">
   
@@ -189,11 +189,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-git常用命令" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-angularJS全选" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/11/30/git常用命令/" class="article-date">
-  	<time datetime="2015-11-30T08:19:54.000Z" itemprop="datePublished">2015-11-30</time>
+      <a href="/2015/12/15/angularJS全选/" class="article-date">
+  	<time datetime="2015-12-15T02:20:38.000Z" itemprop="datePublished">2015-12-15</time>
 </a>
     </div>
   
@@ -206,7 +206,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      git常用命令
+      angularJS全选
     </h1>
   
 
@@ -215,7 +215,7 @@
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angularJS/">angularJS</a></li></ul>
 	</div>
 
         
@@ -226,33 +226,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="1-查看分支">1.查看分支</h3><p>查看本地分支:<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="keyword">branch</span><br><span class="line"></span>* master</span><br></pre></td></tr></table></figure></p>
+        <p>做了一个功能,购物车内lineItem全选和反选功能,记录一下主要代码块.<br>首先声明一个对象,储存动态生成的键值对,默认是全选的.<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$scope</span>.selectLineItemList = &#123;&#125;;</span><br><span class="line"><span class="variable">$scope</span>.select_all = <span class="literal">true</span>;</span><br><span class="line">// 生出数据</span><br><span class="line"><span class="keyword">for</span>(var i= <span class="number">0</span>; i&lt;<span class="variable">$scope</span>.sortLineItems.length; i++)&#123;</span><br><span class="line">    var key = <span class="variable">$scope</span>.sortLineItems[i].lineItemId;</span><br><span class="line">    <span class="variable">$scope</span>.selectLineItemList[key] = true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <a id="more"></a>
-<p>查看远程分支<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -a</span><br><span class="line">* master</span><br><span class="line">  remotes<span class="regexp">/origin/</span>HEAD -&gt; origin/master</span><br><span class="line">  remotes<span class="regexp">/origin/</span>dev</span><br><span class="line">  remotes<span class="regexp">/origin/</span>master</span><br><span class="line">  remotes<span class="regexp">/origin/</span><span class="keyword">public</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="2-新建分支">2.新建分支</h3><p>新建本地分支<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$git</span> branch test</span><br><span class="line">* master</span><br><span class="line">   test</span><br></pre></td></tr></table></figure></p>
-<p>新建远程分支<br><figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$git <span class="keyword">push</span> origin <span class="keyword">test</span>:<span class="keyword">test</span>   // git <span class="keyword">push</span> origin <span class="keyword">test</span>等价</span><br></pre></td></tr></table></figure></p>
-<p>远程新建public分支,并把本地master推上去<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$git</span> push origin master:public</span><br></pre></td></tr></table></figure></p>
-<h3 id="3-本地切换分支">3.本地切换分支</h3><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$git</span> checkout test</span><br><span class="line">切换到分支 <span class="string">'test'</span></span><br></pre></td></tr></table></figure>
-<h3 id="4-删除分支">4.删除分支</h3><p>删除本地分支<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$git</span> branch -d xx</span><br></pre></td></tr></table></figure></p>
-<p>注意:不能删除当前所在分支,例如:当前在test分支<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$git</span> branch -d test</span><br><span class="line">error: 无法删除您当前所在的分支 <span class="string">'test'</span>。</span><br></pre></td></tr></table></figure></p>
-<p>删除远程分支<br>```<br>$git push origin  :public</p>
-<h3 id="5-版本回退">5.版本回退</h3><p>首选确定回退到哪一个版本</p>
-<pre><code>$git log
-  commit 41d3027a49999a280da3fcc413601cfa4345ca35
-  Author: xxxxxx
-  Date:  xxxxxx
-  xxx
-  commit 98c396e520eaeaf59bb0856ff5ccf1cb74cecc74
-  Author: xxxxxxxxx
-  Date:   xxxxxxxxx
-  xxx
-</code></pre>
-
-<p>记下下commitId</p>
-<pre><code>git reset --hard 41d3027a49999a280da3fcc413601cfa434
-</code></pre>
-
-<p>(待续…)</p>
+<p>页面上的代码:<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"sortLineItemList"</span> ng-<span class="keyword">repeat</span>=<span class="string">"lineItem in sortLineItems"</span>&gt;</span><br><span class="line">    &lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"cart-content"</span> ng-click=<span class="string">"selectLineItem(lineItem.lineItemId)"</span>&gt;</span><br><span class="line">        &lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"detail box"</span>&gt;</span><br><span class="line">            &lt;i <span class="type">class</span>=<span class="string">"icon-on"</span> ng-show=<span class="string">"selectLineItemList[lineItem.lineItemId]"</span>&gt;&lt;/i&gt;</span><br><span class="line">            &lt;i <span class="type">class</span>=<span class="string">"icon-off ng-hide"</span> ng-show=<span class="string">"!selectLineItemList[lineItem.lineItemId]"</span>&gt;&lt;/i&gt;</span><br><span class="line">        &lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">    &lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">&lt;/<span class="keyword">div</span>&gt;</span><br><span class="line"></span><br><span class="line">&lt;<span class="keyword">div</span> ng-click=<span class="string">"selectAll(select_all)"</span>&gt;</span><br><span class="line">    &lt;i <span class="type">class</span>=<span class="string">"icon-on"</span> ng-show=<span class="string">"select_all"</span>&gt;&lt;/i&gt;</span><br><span class="line">    &lt;i <span class="type">class</span>=<span class="string">"icon-off ng-hide"</span> ng-show=<span class="string">"!select_all"</span>&gt;&lt;/i&gt;</span><br><span class="line">&lt;/<span class="keyword">div</span>&gt;</span><br></pre></td></tr></table></figure></p>
+<p>JS:<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">// 全选</span><br><span class="line"><span class="variable">$scope</span>.selectAll = <span class="keyword">function</span>(selected)&#123;</span><br><span class="line">    <span class="variable">$scope</span>.select_all = !selected;</span><br><span class="line">    angular.forEach(<span class="variable">$scope</span>.selectLineItemList, function(value,key)&#123;</span><br><span class="line">        <span class="variable">$scope</span>.selectLineItemList[key] = !selected;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line">// 选择/取消limeItem</span><br><span class="line"><span class="variable">$scope</span>.selectLineItem = <span class="keyword">function</span>(lineItemId)&#123;</span><br><span class="line">    var value = <span class="variable">$scope</span>.selectLineItemList[lineItemId];</span><br><span class="line">    <span class="variable">$scope</span>.selectLineItemList[lineItemId] = !value;</span><br><span class="line">    // 判断是否全选</span><br><span class="line">    var flag = false;</span><br><span class="line">    angular.forEach(<span class="variable">$scope</span>.selectLineItemList, function(value,key)&#123;</span><br><span class="line">        if(!<span class="variable">$scope</span>.selectLineItemList[key])&#123;</span><br><span class="line">            flag = true;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    if (flag)&#123;</span><br><span class="line">        <span class="variable">$scope</span>.select_all = false;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        <span class="variable">$scope</span>.select_all = true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -262,18 +239,9 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/12/01/JS中new-Date-和ios的兼容问题/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          JS中new Date()和ios的兼容问题
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/11/30/JS处理时差的问题/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">JS处理时差的问题</div>
+    <a href="/2015/12/14/JS中的对象/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JS中的对象</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -302,7 +270,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="git常用命令" data-title="git常用命令" data-url="http://kingsirlee.github.io/2015/11/30/git常用命令/"></div>
+	<div class="ds-thread" data-thread-key="angularJS全选" data-title="angularJS全选" data-url="http://kingsirlee.github.io/2015/12/15/angularJS全选/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
