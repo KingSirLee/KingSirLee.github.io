@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>JS处理时差的问题 | 李国旺的个人博客</title>
+  <title>JS测试网速 | 李国旺的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;今天发现一个代码上的坑,在订单去支付的时候会有半个小时倒计时的交互,但是一个客户反映:一下单就到截止时间了.后来发现,我们计算倒计时的时候取的是客户端的时间(new Date()),所以存在一个时差的问题.">
+  <meta name="description" content="js测试当前网络状况,为了不响应正常逻辑,在页面底部加入一段JS代码.当然不是每次访问都要去测试,所以有个标识来记录,这里我打算把这个标识放在localStorage里面.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JS处理时差的问题">
-<meta property="og:url" content="http://kingsirlee.github.io/2015/11/30/JS处理时差的问题/index.html">
+<meta property="og:title" content="JS测试网速">
+<meta property="og:url" content="http://kingsirlee.github.io/2015/12/21/JS测试网速/index.html">
 <meta property="og:site_name" content="李国旺的个人博客">
-<meta property="og:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;今天发现一个代码上的坑,在订单去支付的时候会有半个小时倒计时的交互,但是一个客户反映:一下单就到截止时间了.后来发现,我们计算倒计时的时候取的是客户端的时间(new Date()),所以存在一个时差的问题.">
-<meta property="og:updated_time" content="2015-11-30T07:23:02.000Z">
+<meta property="og:description" content="js测试当前网络状况,为了不响应正常逻辑,在页面底部加入一段JS代码.当然不是每次访问都要去测试,所以有个标识来记录,这里我打算把这个标识放在localStorage里面.">
+<meta property="og:updated_time" content="2015-12-21T05:00:54.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JS处理时差的问题">
-<meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;今天发现一个代码上的坑,在订单去支付的时候会有半个小时倒计时的交互,但是一个客户反映:一下单就到截止时间了.后来发现,我们计算倒计时的时候取的是客户端的时间(new Date()),所以存在一个时差的问题.">
+<meta name="twitter:title" content="JS测试网速">
+<meta name="twitter:description" content="js测试当前网络状况,为了不响应正常逻辑,在页面底部加入一段JS代码.当然不是每次访问都要去测试,所以有个标识来记录,这里我打算把这个标识放在localStorage里面.">
   
     <link rel="alternative" href="/atom.xml" title="李国旺的个人博客" type="application/atom+xml">
   
@@ -189,11 +189,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-JS处理时差的问题" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-JS测试网速" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/11/30/JS处理时差的问题/" class="article-date">
-  	<time datetime="2015-11-30T05:49:50.000Z" itemprop="datePublished">2015-11-30</time>
+      <a href="/2015/12/21/JS测试网速/" class="article-date">
+  	<time datetime="2015-12-21T04:44:29.000Z" itemprop="datePublished">2015-12-21</time>
 </a>
     </div>
   
@@ -206,7 +206,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      JS处理时差的问题
+      JS测试网速
     </h1>
   
 
@@ -226,10 +226,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>&#160; &#160; &#160; &#160;今天发现一个代码上的坑,在订单去支付的时候会有半个小时倒计时的交互,但是一个客户反映:一下单就到截止时间了.后来发现,我们计算倒计时的时候取的是客户端的时间(new Date()),所以存在一个时差的问题.<br><a id="more"></a><br>有问题的代码:<br><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">var endTime = $(<span class="string">"input[name=countTime]"</span>).val();</span><br><span class="line">var end_time = <span class="keyword">new</span> Date(endTime).getTime(),</span><br><span class="line">                sys_second = (end_time-<span class="keyword">new</span> Date().getTime())/<span class="number">1000</span>;</span><br><span class="line">var timer = setInterval(function()&#123;</span><br><span class="line">            <span class="keyword">if</span> (sys_second &gt; <span class="number">1</span>) &#123;</span><br><span class="line">                sys_second -= <span class="number">1</span>;</span><br><span class="line">                var <span class="built_in">hour</span> = Math.<span class="built_in">floor</span>(sys_second / <span class="number">3600</span>);</span><br><span class="line">                var <span class="built_in">minute</span> = Math.<span class="built_in">floor</span>((sys_second / <span class="number">60</span>) % <span class="number">60</span>);</span><br><span class="line">                var <span class="built_in">second</span> = Math.<span class="built_in">floor</span>(sys_second % <span class="number">60</span>);</span><br><span class="line">                <span class="built_in">hour</span> = <span class="built_in">hour</span>&lt;<span class="number">10</span>?<span class="string">"0"</span>+<span class="built_in">hour</span>:<span class="built_in">hour</span>; <span class="comment">//计算小时</span></span><br><span class="line">                <span class="built_in">minute</span> = <span class="built_in">minute</span>&lt;<span class="number">10</span>?<span class="string">"0"</span>+<span class="built_in">minute</span>:<span class="built_in">minute</span>; <span class="comment">//计算分钟</span></span><br><span class="line">                <span class="built_in">second</span> = <span class="built_in">second</span>&lt;<span class="number">10</span>?<span class="string">"0"</span>+<span class="built_in">second</span>:<span class="built_in">second</span>; <span class="comment">//计算秒杀</span></span><br><span class="line">                var <span class="built_in">text</span> = <span class="built_in">hour</span> + <span class="string">":"</span> + <span class="built_in">minute</span> + <span class="string">":"</span> + <span class="built_in">second</span>;</span><br><span class="line">                <span class="comment">//....</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                clearInterval(timer);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="number">1000</span>);</span><br></pre></td></tr></table></figure></p>
-<p><code>new Date()</code>取的是当前客户端的时间,很明显,如果不在同一个时差会有问题的.<br><br> 如果在不改变接口的情况下,仅仅通过js来判断的话加上一句代码就OK.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> chinaTime =  <span class="keyword">new</span> <span class="built_in">Date</span>(+<span class="keyword">new</span> <span class="built_in">Date</span>()+<span class="number">8</span>*<span class="number">3600</span>*<span class="number">1000</span>).toISOString().replace(<span class="regexp">/T/g</span>,<span class="string">' '</span>).replace(<span class="regexp">/\.[\d]&#123;3&#125;Z/</span>,<span class="string">''</span>);</span><br><span class="line">sys_second = (end_time-<span class="keyword">new</span> <span class="built_in">Date</span>(chinaTime).getTime())/<span class="number">1000</span>;</span><br></pre></td></tr></table></figure></p>
-<p>这样子计算时间的标准也就一样了.<br>ps:<strong>当然这不是最佳实践方式,起止时间都应该从服务端获取,这样子才可以!</strong></p>
-<p>另外,在JS里面可以写一个方法,代替<code>new Date()</code>来获取当前时间.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getNow</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> chinaTime =  <span class="keyword">new</span> <span class="built_in">Date</span>(+<span class="keyword">new</span> <span class="built_in">Date</span>()+<span class="number">8</span>*<span class="number">3600</span>*<span class="number">1000</span>).toISOString().replace(<span class="regexp">/T/g</span>,<span class="string">' '</span>).replace(<span class="regexp">/\.[\d]&#123;3&#125;Z/</span>,<span class="string">''</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Date</span>(chinaTime)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <p>js测试当前网络状况,为了不响应正常逻辑,在页面底部加入一段JS代码.<br>当然不是每次访问都要去测试,所以有个标识来记录,这里我打算把这个标识放在localStorage里面.<br><a id="more"></a><br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">构建一个对象,包含有path,time,ip,area等这些属性.</span><br><span class="line">页面JS代码</span><br><span class="line"><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span><br><span class="line">   <span class="keyword">if</span>(<span class="built_in">window</span>.localStorage)&#123;</span><br><span class="line">        <span class="keyword">var</span> speed = <span class="built_in">window</span>.localStorage.getItem(<span class="string">'speed'</span>);</span><br><span class="line">        <span class="keyword">if</span> (!speed || speed.indexOf(<span class="string">'detail'</span>) &lt; <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="built_in">window</span>.localStorage.setItem(<span class="string">'speed'</span>, speed+<span class="string">'detail'</span>)</span><br><span class="line">    </span><br><span class="line">            <span class="keyword">var</span> ip = $(<span class="string">"input[name=ip]"</span>).val();</span><br><span class="line">            <span class="keyword">var</span> st = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">            <span class="keyword">var</span> img = <span class="keyword">new</span> Image();</span><br><span class="line">            img.src = <span class="string">'http://img.shijieyou.cn/upload/logo.jpg'</span>;</span><br><span class="line">    </span><br><span class="line">            img.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                <span class="keyword">var</span> et = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">                <span class="keyword">var</span> time = et - st;</span><br><span class="line">                $.ajax(&#123;</span><br><span class="line">                    url: <span class="string">'/xxx/speedTest'</span>,</span><br><span class="line">                    data: &#123;<span class="string">'ip'</span>:ip,<span class="string">'path'</span>:<span class="string">'detail'</span>,<span class="string">'time'</span>:time&#125;,</span><br><span class="line">                    success: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>关于根据IP查找对应的地区,这里采用的是17mon提供的ip归属地查询.</p>
 
       
     </div>
@@ -239,18 +237,9 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/11/30/git常用命令/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          git常用命令
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/11/25/Linux新手入门/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Linux新手入门</div>
+    <a href="/2015/12/15/angularJS全选/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">angularJS全选</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -279,7 +268,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="JS处理时差的问题" data-title="JS处理时差的问题" data-url="http://kingsirlee.github.io/2015/11/30/JS处理时差的问题/"></div>
+	<div class="ds-thread" data-thread-key="JS测试网速" data-title="JS测试网速" data-url="http://kingsirlee.github.io/2015/12/21/JS测试网速/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
