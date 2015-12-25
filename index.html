@@ -114,7 +114,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/angularJS/" style="font-size: 13.33px;">angularJS</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/grails/" style="font-size: 16.67px;">grails</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/前端/" style="font-size: 13.33px;">前端</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a>
+						<a href="/tags/angularJS/" style="font-size: 13.33px;">angularJS</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/grails/" style="font-size: 16.67px;">grails</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/前端/" style="font-size: 16.67px;">前端</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a>
 					</div>
 				</section>
 				
@@ -189,6 +189,64 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-部分浏览器兼容性问题" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/12/25/部分浏览器兼容性问题/" class="article-date">
+  	<time datetime="2015-12-25T06:06:28.000Z" itemprop="datePublished">2015-12-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/25/部分浏览器兼容性问题/">部分浏览器兼容性问题</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>现在的一些浏览器都是双核的:基于Webkit内核和基于IE内核.在实际开发过程中,有些效果在webkit内核下是可以显示正常的效果,但是在IE内核下会出问题.这时候我们可以在代码中增加特定的meta标签,来控制页面的打开方式.<br>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/12/25/部分浏览器兼容性问题/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-匹配包含指定文本的元素" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -423,67 +481,9 @@
 
 
   
-    <article id="post-angularJS全选" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/12/15/angularJS全选/" class="article-date">
-  	<time datetime="2015-12-15T02:20:38.000Z" itemprop="datePublished">2015-12-15</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/15/angularJS全选/">angularJS全选</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>做了一个功能,购物车内lineItem全选和反选功能,记录一下主要代码块.<br>首先声明一个对象,储存动态生成的键值对,默认是全选的.<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$scope</span>.selectLineItemList = &#123;&#125;;</span><br><span class="line"><span class="variable">$scope</span>.select_all = <span class="literal">true</span>;</span><br><span class="line">// 生出数据</span><br><span class="line"><span class="keyword">for</span>(var i= <span class="number">0</span>; i&lt;<span class="variable">$scope</span>.sortLineItems.length; i++)&#123;</span><br><span class="line">    var key = <span class="variable">$scope</span>.sortLineItems[i].lineItemId;</span><br><span class="line">    <span class="variable">$scope</span>.selectLineItemList[key] = true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angularJS/">angularJS</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/12/15/angularJS全选/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 </div>
